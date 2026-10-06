@@ -1,0 +1,31 @@
+name: Generate magazine cover thumbnails
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'magazines/*.pdf'
+      - '.github/workflows/generate-covers.yml'
+permissions:
+  contents: write
+jobs:
+  covers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF renderer
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Render first pages only
+        run: |
+          mkdir -p images/covers
+          for month in may june july august september; do
+            pdftoppm -f 1 -singlefile -jpeg -jpegopt quality=88 -r 110 "magazines/magazine_${month}_2026_web.pdf" "images/covers/${month}-2026"
+          done
+      - name: Commit thumbnails
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/covers/*.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate static magazine cover thumbnails"
+            git push
+          fi
