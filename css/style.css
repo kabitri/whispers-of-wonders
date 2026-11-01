@@ -4,3 +4,11 @@
 
 /* Stack the two Professor Wells interview links */
 .wells-links{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin-top:12px}
+
+/* Compact centered November contributions card */
+.submission-panel{box-sizing:border-box;width:calc(100% - 40px);max-width:620px;margin:28px auto 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:22px 28px;text-align:center}
+.submission-details{max-width:100%}
+.submission-details h3{font-size:22px}
+.submission-email{max-width:100%;box-sizing:border-box}
+@media(max-width:900px){.submission-panel{align-items:center}}
+@media(max-width:600px){.submission-panel{width:calc(100% - 28px);padding:20px 16px}.submission-email{width:auto;max-width:100%}}
