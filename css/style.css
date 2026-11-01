@@ -12,3 +12,10 @@
 .submission-email{max-width:100%;box-sizing:border-box}
 @media(max-width:900px){.submission-panel{align-items:center}}
 @media(max-width:600px){.submission-panel{width:calc(100% - 28px);padding:20px 16px}.submission-email{width:auto;max-width:100%}}
+
+/* Match the November artwork width and tighten the invitation */
+.submission-panel{max-width:520px;padding:16px 20px;gap:9px;margin-top:20px}
+.submission-details .eyebrow{margin-bottom:3px;font-size:11px}
+.submission-details h3{font-size:20px;margin-bottom:4px}
+.submission-details p:last-child{font-size:13px;line-height:1.4}
+.submission-email{padding:10px 14px;font-size:12px}
